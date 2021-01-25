@@ -1,4 +1,5 @@
 const Device = require('./../models/device')
+const { v4: uuid } = require("uuid")
 
 exports.getDeviceList = (req, res) => {
     Device.find({})
@@ -10,7 +11,8 @@ exports.getDeviceList = (req, res) => {
 }
 
 exports.addDevice = (req, res) => {
-    const device = new Device({ ...req.body })
+    const id = uuid()
+    const device = new Device({ ...req.body, id })
     device.save()
     .then(data => {
         res.send(data)
@@ -20,7 +22,6 @@ exports.addDevice = (req, res) => {
 
 
 exports.updateDeviceById = (req, res) => {
-    console.log("parmas ", req.params.id)
     Device.findByIdAndUpdate(req.params.id, { ...req.body }, { new: true })
     .then(device => {
         if(!device) {
