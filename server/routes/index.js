@@ -1,11 +1,6 @@
 const routes = require('express').Router();
 
-const deviceController = require('./../models/devices.controller');
-
-
-routes.get("/", (req, res) => {
-    res.send({ name: "raman" })
-})
+const deviceController = require('./../controllers/device.controller');
 
 routes.get('/getDevices', deviceController.getDeviceList)
 routes.post('/addDevice', deviceController.addDevice)
