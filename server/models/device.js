@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var DeviceSchema = new Schema({
-    id: { type: Number, required: true, min: 1, unique: true },
+    id: { type: String, required: true },
     device: {type: String, required: true },
     os: { type: String, required: true},
     manufacturer: { type: String, required: true},
